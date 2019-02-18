@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>判断缺失值 | R语言教程|余醉</title>
+    <meta name="description" content="用以致学">
+    <link rel="icon" href="/logo2.png">
+    
+    <link rel="preload" href="/assets/css/0.styles.7d572d9b.css" as="style"><link rel="preload" href="/assets/js/app.09a3a5be.js" as="script"><link rel="preload" href="/assets/js/4.cf612f89.js" as="script"><link rel="prefetch" href="/assets/js/2.8a177a30.js"><link rel="prefetch" href="/assets/js/3.e4d78258.js"><link rel="prefetch" href="/assets/js/5.50a43056.js"><link rel="prefetch" href="/assets/js/6.0f1bd8be.js"><link rel="prefetch" href="/assets/js/7.74d6183a.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.7d572d9b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">R语言教程|余醉</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">主页</a></div><div class="nav-item"><a href="/post/" class="nav-link">上网导航</a></div><div class="nav-item"><a href="https://google.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  视频
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="/QA/" class="nav-link router-link-active">问答</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">主页</a></div><div class="nav-item"><a href="/post/" class="nav-link">上网导航</a></div><div class="nav-item"><a href="https://google.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  视频
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="/QA/" class="nav-link router-link-active">问答</a></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading open"><span>判断缺失值</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/QA/%E5%88%A4%E6%96%AD%E7%BC%BA%E5%A4%B1%E5%80%BC.html#判断缺失值" class="sidebar-link">判断缺失值</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/QA/%E5%88%A4%E6%96%AD%E7%BC%BA%E5%A4%B1%E5%80%BC.html#进一步观测" class="sidebar-link">进一步观测</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/QA/%E5%88%A4%E6%96%AD%E7%BC%BA%E5%A4%B1%E5%80%BC.html#缺失值处理" class="sidebar-link">缺失值处理</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/QA/%E5%88%A4%E6%96%AD%E7%BC%BA%E5%A4%B1%E5%80%BC.html#直接删除" class="sidebar-link">直接删除</a></li><li class="sidebar-sub-header"><a href="/QA/%E5%88%A4%E6%96%AD%E7%BC%BA%E5%A4%B1%E5%80%BC.html#均值或中位数代替" class="sidebar-link">均值或中位数代替</a></li><li class="sidebar-sub-header"><a href="/QA/%E5%88%A4%E6%96%AD%E7%BC%BA%E5%A4%B1%E5%80%BC.html#插补法" class="sidebar-link">插补法</a></li></ul></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><p>缺失值是数据中经常出现的问题，在调查中无回答、录入错误都会导致缺失值的发生
+缺失数据会影响分析工作的进行，影响统计工作的效率，还会导致分析的偏差。所以我们要学会缺失值的处理。</p> <h2 id="判断缺失值">判断缺失值</h2> <div class="language-{r} extra-class"><pre class="language-text"><code>sum(is.na(nhanes2))  #计算data中缺失值的数量
+</code></pre></div><p>数据中共有27个缺失值。</p> <div class="language-{r} extra-class"><pre class="language-text"><code>sum(complete.cases(nhanes2)) #计算data中完整样本的数量
+</code></pre></div><p>数据框中共有13条完整观测值。</p> <h2 id="进一步观测">进一步观测</h2> <p>我们知道了存在缺失数据，下面进一步对数据缺失情况进行观测。</p> <div class="language-{r } extra-class"><pre class="language-text"><code>library(mice)
+md.pattern(nhanes2)
+</code></pre></div><p>其中1表示没有缺失数据，0表示存在缺失数据。13表示有是13样本是完整的。7表示有7个样本少了hyp、bmi、chl三个变量，最后一行表示各个变量缺失的样本数合计。</p> <h2 id="缺失值处理">缺失值处理</h2> <h3 id="直接删除">直接删除</h3> <p>条件：1.缺失数据的比例较少
+2.缺失数据是随机出现的
+这样删除缺失数据后对分析结果影响不大。</p> <h3 id="均值或中位数代替">均值或中位数代替</h3> <p>优点：不会减少样本信息。
+缺点：不是随机出现时会产生偏误。</p> <h3 id="插补法">插补法</h3> <p>最简单的是从总体中随机抽取某个样本缺失样本。</p> <div class="language-{r} extra-class"><pre class="language-text"><code>sub &lt;- which(is.na(nhanes2[,4]==TRUE))
+dataTR&lt;-nhanes2[-sub,]
+dataTE&lt;-nhanes2[sub,]
+dataTE
+dataTE[,4]&lt;-sample(dataTR[,4],length(dataTE[,4]),replace=T)
+dataTE
+</code></pre></div><p>均值法是通过缺失值所在变量所有非缺失观测值的均值，使用均值来代替缺失值的插补方法。类似的方法还有中位数、四分位数等进行插补。</p> <div class="language-{r} extra-class"><pre class="language-text"><code>sub  &lt;- which(is.na(nhanes2[,4]==TRUE)) 
+dataTR &lt;-nhanes2[-sub,]
+dataTE &lt;-nhanes2[sub,]
+dataTE[,4] &lt;- mean(dataTR[,4])
+dataTE
+</code></pre></div><p>由于随机插补和均值差补中没有用到相关变量信息，因此会存在一定偏差,而回归模型是将差补变量作为因变量,其他相关变量作为自变量,通过建立回归模型预测出因变量的值对缺失变量进行插补。</p> <div class="language-{r} extra-class"><pre class="language-text"><code>sub &lt;- which(is.na(nhanes2[,4])==TRUE) #返回nhanes2数据集中第4列为NA的行
+dataTR &lt;- nhanes2[-sub,]
+dataTE &lt;- nhanes2[sub,]
+dataTE[,4]&lt;-mean(dataTR[,4])
+dataTE
+lm = lm(chl~age,data = dataTR)
+nhanes2[sub,4]=round(predict(lm,dataTE))
+head(nhanes2)
+</code></pre></div><p>热插补是指在非趋势数据集中找到一个与缺失值所在样本相似的样本(匹配样本)，利用其中的观测值对缺失值进行插补。</p> <div class="language-{r} extra-class"><pre class="language-text"><code>accept &lt;- nahnces2[which(apply(is.na(nhances2),1, sum)!=0),]
+donate &lt;- nahcnes2[which(apply(is.na(nhanes2),1,sum)==0),]
+accept[1,]
+donate[1,]
+</code></pre></div></div> <div class="page-edit"><!----> <!----></div> <!----> </div> <!----></div></div>
+    <script src="/assets/js/app.09a3a5be.js" defer></script><script src="/assets/js/4.cf612f89.js" defer></script>
+  </body>
+</html>
